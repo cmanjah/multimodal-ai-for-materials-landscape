@@ -20,10 +20,15 @@ function csv(url) {
 const _jsonCache = {};
 function fetchJSON(url) {
   if (_jsonCache[url]) return _jsonCache[url];
-  _jsonCache[url] = fetch(url).then(r => {
-    if (!r.ok) throw new Error(`HTTP ${r.status}: ${url}`);
-    return r.json();
-  });
+  _jsonCache[url] = fetch(url)
+    .then(r => {
+      if (!r.ok) throw new Error(`HTTP ${r.status}: ${url}`);
+      return r.json();
+    })
+    .catch(err => {
+      delete _jsonCache[url];
+      throw err;
+    });
   return _jsonCache[url];
 }
 
@@ -85,8 +90,10 @@ function downloadCSVFile(filename, data) {
   const blob = new Blob([Papa.unparse(data)], { type: 'text/csv;charset=utf-8;' });
   const url  = URL.createObjectURL(blob);
   const a    = Object.assign(document.createElement('a'), { href: url, download: filename });
+  a.style.display = 'none';
+  document.body.appendChild(a);
   a.click();
-  URL.revokeObjectURL(url);
+  setTimeout(() => { URL.revokeObjectURL(url); a.remove(); }, 0);
 }
 
 /* ── Shared Plotly layout base ──────────────────────────── */
@@ -123,10 +130,15 @@ function _fmtDate(iso) {
 /* ── Last-updated resolver ───────────────────────────────── */
 async function setLastUpdated() {
   try {
-    const build = await fetchJSON('./assets/meta/build.json');
-    const label = _fmtDate(build?.built_at);
+    const manifest = await fetchJSON('./data/datasets.json');
+    const ds = manifest.datasets?.[0];
+    const meta = ds?.meta ? await fetchJSON(ds.meta) : null;
+    const iso = meta?.last_updated
+      ? `${meta.last_updated}-01T00:00:00Z`
+      : (await fetchJSON('./assets/meta/build.json'))?.built_at;
+    const label = _fmtDate(iso);
     if (label) {
-      ['last-updated','footer-last-updated'].forEach(id => {
+      ['last-updated', 'footer-last-updated'].forEach(id => {
         const el = document.getElementById(id);
         if (el) el.textContent = label;
       });
@@ -205,11 +217,13 @@ const FOOTER_HTML = `
   const toggle = document.getElementById('fig-menu-toggle');
   const panel  = document.getElementById('fig-menu-panel');
   const nav    = document.getElementById('figure-nav');
-  if (toggle && nav) {
-    toggle.addEventListener('click', () => {
-      const open = nav.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
+  if (toggle && panel && nav) {
+    const closeNav = () => { nav.classList.remove('open'); toggle.setAttribute('aria-expanded', 'false'); };
+    const openNav  = () => { nav.classList.add('open');    toggle.setAttribute('aria-expanded', 'true');  };
+    toggle.addEventListener('click', e => { e.stopPropagation(); nav.classList.contains('open') ? closeNav() : openNav(); });
+    panel.addEventListener('click',  e => { if (e.target.closest('a')) closeNav(); });
+    document.addEventListener('click',   e => { if (!nav.contains(e.target)) closeNav(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNav(); });
   }
 
   // Active sub-nav link on scroll

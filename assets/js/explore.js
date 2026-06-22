@@ -256,9 +256,9 @@ async function loadStats() {
     container.innerHTML = `
       <div class="stats-strip" role="list">
         <div class="stat-card"><div class="stat-label">Multimodal AI papers in 2025</div>
-          <div class="stat-value">676</div><div class="stat-sub">Up from 43 in 2020</div></div>
+          <div class="stat-value">576</div><div class="stat-sub">Up from 32 in 2020</div></div>
         <div class="stat-card"><div class="stat-label">Growth (2020 → 2025)</div>
-          <div class="stat-value">16×</div><div class="stat-sub">Year-on-year increase</div></div>
+          <div class="stat-value">18×</div><div class="stat-sub">Year-on-year increase</div></div>
         <div class="stat-card"><div class="stat-label">Data categories tracked</div>
           <div class="stat-value">4</div><div class="stat-sub">Composition, Microstructure, Processing, T&amp;C</div></div>
         <div class="stat-card"><div class="stat-label">Interactive figures</div>

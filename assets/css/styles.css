@@ -30,6 +30,7 @@
 /* ── Reset ──────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body {
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
   background: var(--bg);
@@ -411,7 +412,9 @@ img, svg { display: block; }
   font-style: normal;
   box-shadow: 0 4px 12px rgba(0,0,0,.25);
 }
-.help-tip:hover::after { opacity: 1; }
+.help-tip:hover::after,
+.help-tip:focus::after,
+.help-tip:focus-visible::after { opacity: 1; }
 
 /* ── Card controls row ──────────────────────────────────── */
 .card-controls {
