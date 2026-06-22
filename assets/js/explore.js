@@ -232,9 +232,11 @@ async function loadStats() {
 
   try {
     const manifest = await fetchJSON('./data/datasets.json');
-    const ds = manifest.datasets[0];
+    const ds = manifest.datasets?.[0];
+    if (!ds?.meta) throw new Error('No datasets registered in data/datasets.json');
     const meta    = await fetchJSON(ds.meta);
-    const summary = await fetchJSON(`./data/${meta.id}/summary.json`);
+    const baseDir = ds.meta.replace(/\/meta\.json$/, '');
+    const summary = await fetchJSON(`${baseDir}/summary.json`);
     const s = summary;
 
     container.innerHTML = `
