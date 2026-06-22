@@ -1,0 +1,8 @@
+{
+  "datasets": [
+    {
+      "id": "material-landscape",
+      "meta": "./data/material-landscape/meta.json"
+    }
+  ]
+}
