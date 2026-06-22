@@ -157,11 +157,10 @@ const FOOTER_HTML = `
                width="28" height="28" aria-hidden="true" onerror="this.style.display='none'">
           Multimodal AI for Material Science
         </a>
-        <p>Interactive data visualisations from the paper
-        <em>Generative and multimodal AI for materials prediction and design</em>
-        by Liu et al. (IOP Publishing, J. Phys. Mater., in preparation).
+        <p>Interactive data visualisations covering multimodal and generative AI trends in materials research.
         Coverage: Scopus 2020–2025. Last updated <span id="footer-last-updated">March 2026</span>.</p>
       </div>
+      <!-- BIBTEX BLOCK — uncomment when paper is published
       <div class="footer-cite-bibtex">
         <div class="bibtex-wrap">
           <div class="bibtex-header">
@@ -171,9 +170,9 @@ const FOOTER_HTML = `
                 <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
                 <polyline points="14 2 14 8 20 8"/>
               </svg>
-              BibTeX (provisional)
+              BibTeX
             </span>
-            <span class="bibtex-hint">To be updated upon publication</span>
+            <span class="bibtex-hint">Copy the entry below for use in LaTeX documents</span>
           </div>
           <div class="bibtex-block"><button class="bibtex-copy-btn" onclick="navigator.clipboard.writeText(this.nextElementSibling.textContent.trim()).then(()=>{this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500)})" aria-label="Copy BibTeX to clipboard">Copy</button><code>@article{liu2026generative,
   title   = {Generative and multimodal AI for materials prediction and design:
@@ -184,10 +183,11 @@ const FOOTER_HTML = `
              and Lu, Haiping},
   journal = {Journal of Physics: Materials},
   year    = {2026},
-  note    = {In preparation}
+  doi     = {10.xxxx/xxxxxx}
 }</code></div>
         </div>
       </div>
+      -->
     </div>
     <div class="footer-bottom">
       <span class="footer-bottom-text">
