@@ -1,16 +1,17 @@
-# Multimodal AI for Material Science — Explorer
+# Multimodal AI for Material Science — [Explorer 🧪](https://multimodalai.github.io/multimodal-ai-for-materials-landscape/)
 
-![Last updated](https://img.shields.io/badge/Last%20updated-March%202026-6c757d)
+![Last updated](https://img.shields.io/badge/Last%20updated-June%202026-6c757d)
 ![Status](https://img.shields.io/badge/Paper-In%20preparation-orange)
 
-Interactive data visualisations based on the paper:
-
-> **Generative and multimodal AI for materials prediction and design: Progress, challenges, and perspectives**
-> Xianyuan Liu, Charles Anjah, Benjamin E. Jolly, Jonathon F. S. Markanday, Joshua Berry, Haolin Wang, Nicola Morley, Delvin Ce Zhang, Katerina A. Christofidou, Haiping Lu
-> *Journal of Physics: Materials* (IOP Publishing) — in preparation
+Navigate with the [**Interactive Explorer**](https://multimodalai.github.io/multimodal-ai-for-materials-landscape/).
 
 <div align="center">
-  <img src="explorer-preview.png" alt="Interactive Explorer preview" width="800">
+  <a href="https://multimodalai.github.io/multimodal-ai-for-materials-landscape/">
+    <img src="explorer-preview.png" alt="Interactive Explorer preview" width="800">
+  </a>
+</div>
+<div align="center" style="margin-top: 0; margin-bottom: 12px;">
+  <em>Click the image to explore.</em>
 </div>
 
 ---
@@ -91,25 +92,6 @@ node scripts/generate_datasets_manifest.mjs
 ```
 
 ---
-
-## Citation (provisional)
-
-```bibtex
-@article{liu2026generative,
-  title   = {Generative and multimodal AI for materials prediction and design:
-             Progress, challenges, and perspectives},
-  author  = {Liu, Xianyuan and Anjah, Charles and Jolly, Benjamin E. and
-             Markanday, Jonathon F. S. and Berry, Joshua and Wang, Haolin and
-             Morley, Nicola and Zhang, Delvin Ce and Christofidou, Katerina A.
-             and Lu, Haiping},
-  journal = {Journal of Physics: Materials},
-  year    = {2026},
-  note    = {In preparation}
-}
-```
-
----
-
 ## Licence
 
 [MIT](LICENSE) — © 2026 University of Sheffield
